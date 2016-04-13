@@ -112,12 +112,17 @@ public class ReadFunction {
                     result.push(Math.PI);
                 } else if (e.equals("e") || e.equals("E")) {
                     result.push(Math.E);
-                } else  if (delims[i].equals("x") || delims[i].equals("y") || delims[i].equals("z")){
+                } else if (delims[i].equals("x") || delims[i].equals("y") || delims[i].equals("z")) {
                     result.push(x);
                 } else {
-                    result.push(new Double(e));
+                    try {
+                        result.push(new Double(e));
+                    } catch (NumberFormatException ex) {
+                        System.out.println("ERROR: expression is not registered ");
+                        break;
+                    }
                 }
-            } else {
+            }else {
                 Double op2 = result.pop();
                 Double op1 = result.empty() ? 0d : result.pop();
                 switch (e) {
