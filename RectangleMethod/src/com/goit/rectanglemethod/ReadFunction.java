@@ -101,11 +101,12 @@ public class ReadFunction {
 
 
     public static Double calculateIntegral(String expression, Double x) {
+        boolean validValue = true;
         String rpn = conversionToRPN(expression, OPERATORS);
         String[] delims = rpn.split(" ");
         Stack<Double> result = new Stack<Double>();
 
-        for (int i = 0; i < delims.length; i++){
+        for (int i = 0; i < delims.length; i++) {
             String e = delims[i];
             if (!OPERATORS.keySet().contains(e)) {
                 if (e.equals("pi") || e.equals("Pi") || e.equals("PI")) {
@@ -118,50 +119,67 @@ public class ReadFunction {
                     try {
                         result.push(new Double(e));
                     } catch (NumberFormatException ex) {
-                        System.out.println("ERROR: expression is not registered ");
-                        break;
+                        System.out.println("ERROR: an error in the recording of expression. ");
+                        System.exit(-1);
                     }
                 }
-            }else {
+            } else {
                 Double op2 = result.pop();
                 Double op1 = result.empty() ? 0d : result.pop();
                 switch (e) {
-                    case "*" : 	result.push(op1 * op2);
+                    case "*":
+                        result.push(op1 * op2);
                         break;
-                    case "/" : 	result.push(op1 / op2);
+                    case "/":
+                        if (op2.equals(0d)) {
+                            System.out.println("ERROR: division by zero");
+                            System.exit(-1);
+                        } else {
+                            result.push(op1 / op2);
+                            break;
+                        }
+                    case "+":
+                        result.push(op1 + op2);
                         break;
-                    case "+" : 	result.push(op1 + op2);
+                    case "-":
+                        result.push(op1 - op2);
                         break;
-                    case "-" : 	result.push(op1 - op2);
+                    case "^":
+                        result.push(Math.pow(op1, op2));
                         break;
-                    case "^" : 	result.push(Math.pow(op1, op2));
-                        break;
-                    case "sin" : 	if (op1 != 0) {
-                        result.push(op1);
-                    }
+                    case "sin":
+                        if (op1 != 0) {
+                            result.push(op1);
+                        }
                         result.push(Math.sin(op2));
                         break;
-                    case "cos" : 	if (op1 != 0) {
-                        result.push(op1);
-                    }
+                    case "cos":
+                        if (op1 != 0) {
+                            result.push(op1);
+                        }
                         result.push(Math.cos(op2));
                         break;
-                    case "tg" : 	if (op1 != 0) {
-                        result.push(op1);
-                    }
+                    case "tg":
+                        if (op1 != 0) {
+                            result.push(op1);
+                        }
                         result.push(Math.tan(op2));
                         break;
-                    case "arctan" : 	if (op1 != 0) {
-                        result.push(op1);
-                    }
+                    case "arctan":
+                        if (op1 != 0) {
+                            result.push(op1);
+                        }
                         result.push(Math.atan(op2));
                         break;
-                    case "exp" : 	if (op1 != 0) {
-                        result.push(op1);
-                    }
+                    case "exp":
+                        if (op1 != 0) {
+                            result.push(op1);
+                        }
                         result.push(Math.exp(op2));
                         break;
-                    default: 	System.out.println("Error!");
+                    default:
+                        System.out.println("ERROR: an error in the recording of expression. ");
+                        System.exit(-1);
                 }
             }
         }

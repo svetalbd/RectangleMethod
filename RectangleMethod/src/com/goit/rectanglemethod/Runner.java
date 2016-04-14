@@ -1,5 +1,7 @@
 package com.goit.rectanglemethod;
 
+import java.util.InputMismatchException;
+import java.util.MissingFormatArgumentException;
 import java.util.Scanner;
 
 /**
@@ -12,19 +14,27 @@ public class Runner {
         String expression = sc.nextLine();
         ReadFunction readFunction = new ReadFunction();
 
-        readFunction.calculateIntegral(expression, 2d);
+        System.out.print(readFunction.calculateIntegral(expression, 2d));
 
-        System.out.println("Input lower borders");
+        System.out.print("Input lower borders: ");
         /*Можно сделать класс для границ, чтобы вы все к нему обращались.*/
-        Double lowerBorder = sc.nextDouble();
+        try {
+            Double lowerBorder = sc.nextDouble();
+        } catch (InputMismatchException e) {
+            System.out.println("ERROR: it must be a number.");
+        }
 
 
-        System.out.println("Input upper borders");
+        System.out.print("Input upper borders: ");
         /*смотрите комментарий выше*/
-        Double upperBorder = sc.nextDouble();
+        try {
+            Double upperBorder = sc.nextDouble();
+        } catch (InputMismatchException e) {
+            System.out.println("ERROR: it must be a number.");
+        }
 
 
-        System.out.println("Input number of steps");
+        System.out.print("Input count of steps, please: ");
         /*смотрите комментарий выше*/
         Integer countOfSteps = sc.nextInt();
 
