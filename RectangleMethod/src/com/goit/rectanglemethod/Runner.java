@@ -24,7 +24,6 @@ public class Runner {
 
         LowerUpperBorder lowerUpperBorder = new LowerUpperBorder();
 
-        System.out.println( readFunction.calculateIntegral(readFunction.getExpression(),0.1));
 
         while (!correctValue) {
             System.out.print("Input lower borders: ");
@@ -101,11 +100,11 @@ public class Runner {
                 }
             }
             switch (choice) {
-                case 1://метод левых прямоугольников
+                case 1:
                     leftCornerRectangleMethod.setExpression(expression);
                     Double area = leftCornerRectangleMethod.leftCornerRM(lowerUpperBorder.getLowerBorder(),
                             lowerUpperBorder.getUpperBorder(), lowerUpperBorder.getCountOfSteps());
-                    System.out.println("Area of function is" + area.toString());
+                    System.out.printf("Area of function is %5.5s" , area.toString());
                     correctValue = true;
                     break;
                 case 2: //метод центральных прямоугольников
