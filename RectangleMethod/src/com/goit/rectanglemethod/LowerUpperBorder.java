@@ -6,7 +6,7 @@ package com.goit.rectanglemethod;
 public class LowerUpperBorder {
     private double lowerBorder;
     private double upperBorder;
-    private double countOfSteps;
+    private Integer countOfSteps;
 
     public double getLowerBorder() {
         return lowerBorder;
@@ -24,11 +24,11 @@ public class LowerUpperBorder {
         this.upperBorder = upperBorder;
     }
 
-    public double getCountOfSteps() {
+    public Integer getCountOfSteps() {
         return countOfSteps;
     }
 
-    public void setCountOfSteps(double countOfSteps) {
+    public void setCountOfSteps(Integer countOfSteps) {
         this.countOfSteps = countOfSteps;
     }
 

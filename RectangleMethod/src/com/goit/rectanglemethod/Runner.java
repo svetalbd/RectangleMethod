@@ -20,9 +20,11 @@ public class Runner {
         Scanner sc = new Scanner(System.in);
         String expression = sc.nextLine();
         ReadFunction readFunction = new ReadFunction();
+        readFunction.setExpression(expression);
+
         LowerUpperBorder lowerUpperBorder = new LowerUpperBorder();
 
-        System.out.print(readFunction.calculateIntegral(expression, 2d));
+        System.out.println( readFunction.calculateIntegral(readFunction.getExpression(),0.1));
 
         while (!correctValue) {
             System.out.print("Input lower borders: ");
@@ -80,6 +82,7 @@ public class Runner {
 
 
 
+        LeftCornerRectangleMethod leftCornerRectangleMethod = new LeftCornerRectangleMethod();
         correctValue = false;
         boolean isInteger = false;
         Integer choice = null;
@@ -99,6 +102,10 @@ public class Runner {
             }
             switch (choice) {
                 case 1://метод левых прямоугольников
+                    leftCornerRectangleMethod.setExpression(expression);
+                    Double area = leftCornerRectangleMethod.leftCornerRM(lowerUpperBorder.getLowerBorder(),
+                            lowerUpperBorder.getUpperBorder(), lowerUpperBorder.getCountOfSteps());
+                    System.out.println("Area of function is" + area.toString());
                     correctValue = true;
                     break;
                 case 2: //метод центральных прямоугольников

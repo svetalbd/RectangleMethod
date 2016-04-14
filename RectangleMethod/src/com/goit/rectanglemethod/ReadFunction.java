@@ -6,6 +6,15 @@ import java.util.*;
  * Created by Сергей on 12.04.2016.
  */
 public class ReadFunction {
+    private  String expression;
+
+    public String getExpression() {
+        return expression;
+    }
+
+    public void setExpression(String expression) {
+        this.expression = expression;
+    }
 
 
     public static final Map<String, Integer> OPERATORS;
@@ -183,7 +192,7 @@ public class ReadFunction {
                 }
             }
         }
-        return (double) Math.round(result.pop());
+        return (double) result.pop();
     }
 
 }
