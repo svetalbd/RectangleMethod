@@ -64,8 +64,14 @@ public class Runner {
             try {
                 sc = new Scanner(System.in);
                 Integer countOfSteps = sc.nextInt();
-                lowerUpperBorder.setCountOfSteps(countOfSteps);
-                correctValue = true;
+                if (countOfSteps > 0) {
+                    lowerUpperBorder.setCountOfSteps(countOfSteps);
+                    correctValue = true;
+                } else {
+                    System.out.println("ERROR: Count of steps must be more than 0.");
+                    correctValue = false;
+                }
+
             } catch (InputMismatchException e) {
                 System.out.println("ERROR: it must be an integer number.");
                 correctValue = false;
