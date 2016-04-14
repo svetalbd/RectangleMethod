@@ -32,5 +32,13 @@ public class LowerUpperBorder {
         this.countOfSteps = countOfSteps;
     }
 
+    public Boolean correctBorderInput (Double lowerBorder, double upperBorder){
+        if ((upperBorder - lowerBorder) <= 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 
 }
