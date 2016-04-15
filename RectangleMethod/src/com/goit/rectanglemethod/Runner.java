@@ -81,7 +81,7 @@ public class Runner {
 
 
 
-        LeftCornerRectangleMethod leftCornerRectangleMethod = new LeftCornerRectangleMethod();
+
         correctValue = false;
         boolean isInteger = false;
         Integer choice = null;
@@ -101,16 +101,22 @@ public class Runner {
             }
             switch (choice) {
                 case 1:
+                    LeftCornerRectangleMethod leftCornerRectangleMethod = new LeftCornerRectangleMethod();
                     leftCornerRectangleMethod.setExpression(expression);
                     Double area = leftCornerRectangleMethod.leftCornerRM(lowerUpperBorder.getLowerBorder(),
                             lowerUpperBorder.getUpperBorder(), lowerUpperBorder.getCountOfSteps());
-                    System.out.printf("Area of function is %5.5s" , area.toString());
+                    System.out.printf("Area of integral is %5.5f" , area);
                     correctValue = true;
                     break;
                 case 2: //метод центральных прямоугольников
                     correctValue = true;
                     break;
                 case 3: //метод правых прямоугольников
+                    RightCornerRectangleMethod rightCornerRectangleMethod = new RightCornerRectangleMethod();
+                    rightCornerRectangleMethod.setExpression(expression);
+                    Double areaRC = rightCornerRectangleMethod.rightCornerRM(lowerUpperBorder.getLowerBorder(),
+                            lowerUpperBorder.getUpperBorder(), lowerUpperBorder.getCountOfSteps());
+                    System.out.printf("Area of integral is %5.5f" , areaRC);
                     correctValue = true;
                     break;
                 default:
