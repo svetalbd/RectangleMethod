@@ -20,7 +20,7 @@ public class RightCornerRectangleMethod {
         Double deltaX = (upperBorder - lowerBorder) / countOfSteps;
         Double[] array = new Double[countOfSteps];
         array[0] = lowerBorder+deltaX;
-        result = deltaX * readFunction.calculateIntegral(expression, lowerBorder);
+        result = deltaX * readFunction.calculateIntegral(expression, array[0]);
         for (int i = 1; i<=countOfSteps-1; i++){
             array[i] = array[i-1]+ deltaX;
             result = result + deltaX * readFunction.calculateIntegral(expression, array[i]);
