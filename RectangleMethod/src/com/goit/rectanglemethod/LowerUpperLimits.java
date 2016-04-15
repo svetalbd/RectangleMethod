@@ -3,7 +3,7 @@ package com.goit.rectanglemethod;
 /**
  * Created by Сергей on 14.04.2016.
  */
-public class LowerUpperBorder {
+public class LowerUpperLimits {
     private double lowerBorder;
     private double upperBorder;
     private Integer countOfSteps;

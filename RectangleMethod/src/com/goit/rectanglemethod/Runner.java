@@ -1,7 +1,6 @@
 package com.goit.rectanglemethod;
 
 import java.util.InputMismatchException;
-import java.util.MissingFormatArgumentException;
 import java.util.Scanner;
 
 /**
@@ -19,10 +18,10 @@ public class Runner {
                 " Variable must be named \"x\", \"y\" or \"z\":");
         Scanner sc = new Scanner(System.in);
         String expression = sc.nextLine();
-        ReadFunction readFunction = new ReadFunction();
-        readFunction.setExpression(expression);
+        ConvertFunctionToRPN convertFunctionToRPN = new ConvertFunctionToRPN();
+        convertFunctionToRPN.setExpression(expression);
 
-        LowerUpperBorder lowerUpperBorder = new LowerUpperBorder();
+        LowerUpperLimits lowerUpperLimits = new LowerUpperLimits();
 
 
         while (!correctValue) {
@@ -31,7 +30,7 @@ public class Runner {
                 sc = new Scanner(System.in);
                 lowerBorder = sc.nextDouble();
                 correctValue = true;
-                lowerUpperBorder.setLowerBorder(lowerBorder);
+                lowerUpperLimits.setLowerBorder(lowerBorder);
             } catch (InputMismatchException e) {
                 System.out.println("ERROR: it must be a number.");
                 correctValue = false;
@@ -45,7 +44,7 @@ public class Runner {
             try {
                 sc = new Scanner(System.in);
                 upperBorder = sc.nextDouble();
-                lowerUpperBorder.setUpperBorder(upperBorder);
+                lowerUpperLimits.setUpperBorder(upperBorder);
                 correctValue = true;
             } catch (InputMismatchException e) {
                 System.out.println("ERROR: it must be a number.");
@@ -53,10 +52,10 @@ public class Runner {
             }
         }
 
-        if (!lowerUpperBorder.correctBorderInput(lowerUpperBorder.getLowerBorder(), lowerUpperBorder.getUpperBorder())) {
+        if (!lowerUpperLimits.correctBorderInput(lowerUpperLimits.getLowerBorder(), lowerUpperLimits.getUpperBorder())) {
             System.out.println("Upper border is smaller than lower border. The boundaries are reversed.");
-            lowerUpperBorder.setLowerBorder(upperBorder);
-            lowerUpperBorder.setUpperBorder(lowerBorder);
+            lowerUpperLimits.setLowerBorder(upperBorder);
+            lowerUpperLimits.setUpperBorder(lowerBorder);
         }
 
         correctValue = false;
@@ -66,7 +65,7 @@ public class Runner {
                 sc = new Scanner(System.in);
                 Integer countOfSteps = sc.nextInt();
                 if (countOfSteps > 0) {
-                    lowerUpperBorder.setCountOfSteps(countOfSteps);
+                    lowerUpperLimits.setCountOfSteps(countOfSteps);
                     correctValue = true;
                 } else {
                     System.out.println("ERROR: Count of steps must be more than 0.");
@@ -101,25 +100,25 @@ public class Runner {
             }
             switch (choice) {
                 case 1:
-                    LeftCornerRectangleMethod leftCornerRectangleMethod = new LeftCornerRectangleMethod();
-                    leftCornerRectangleMethod.setExpression(expression);
-                    Double area = leftCornerRectangleMethod.leftCornerRM(lowerUpperBorder.getLowerBorder(),
-                            lowerUpperBorder.getUpperBorder(), lowerUpperBorder.getCountOfSteps());
+                    LeftRectangleMethod leftRectangleMethod = new LeftRectangleMethod();
+                    leftRectangleMethod.setExpression(expression);
+                    Double area = leftRectangleMethod.leftCornerRM(lowerUpperLimits.getLowerBorder(),
+                            lowerUpperLimits.getUpperBorder(), lowerUpperLimits.getCountOfSteps());
                     System.out.printf("Area of integral is %5.5f" , area);
                     correctValue = true;
                     break;
                 case 2: //метод центральных прямоугольников
                     CenterRectangleMethod centerCornerRectangleMethod = new CenterRectangleMethod();
                     centerCornerRectangleMethod.setExpression(expression);
-                    Double areaCC = centerCornerRectangleMethod.centerCornerRM(lowerUpperBorder.getLowerBorder(),
-                            lowerUpperBorder.getUpperBorder(), lowerUpperBorder.getCountOfSteps());
+                    Double areaCC = centerCornerRectangleMethod.centerCornerRM(lowerUpperLimits.getLowerBorder(),
+                            lowerUpperLimits.getUpperBorder(), lowerUpperLimits.getCountOfSteps());
                     System.out.printf("Area of integral is %5.5f" , areaCC);
                     correctValue = true;
                 case 3: //метод правых прямоугольников
-                    RightCornerRectangleMethod rightCornerRectangleMethod = new RightCornerRectangleMethod();
-                    rightCornerRectangleMethod.setExpression(expression);
-                    Double areaRC = rightCornerRectangleMethod.rightCornerRM(lowerUpperBorder.getLowerBorder(),
-                            lowerUpperBorder.getUpperBorder(), lowerUpperBorder.getCountOfSteps());
+                    RightRectangleMethod rightRectangleMethod = new RightRectangleMethod();
+                    rightRectangleMethod.setExpression(expression);
+                    Double areaRC = rightRectangleMethod.rightCornerRM(lowerUpperLimits.getLowerBorder(),
+                            lowerUpperLimits.getUpperBorder(), lowerUpperLimits.getCountOfSteps());
                     System.out.printf("Area of integral is %5.5f" , areaRC);
                     correctValue = true;
                     break;

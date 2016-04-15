@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Created by Сергей on 12.04.2016.
  */
-public class ReadFunction {
+public class ConvertFunctionToRPN {
     private  String expression;
 
     public String getExpression() {
