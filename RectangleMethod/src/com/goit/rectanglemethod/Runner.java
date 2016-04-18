@@ -18,8 +18,6 @@ public class Runner {
                 " Variable must be named \"x\", \"y\" or \"z\":");
         Scanner sc = new Scanner(System.in);
         String expression = sc.nextLine();
-        ConvertFunctionToRPN convertFunctionToRPN = new ConvertFunctionToRPN();
-        convertFunctionToRPN.setExpression(expression);
 
         LowerUpperLimits lowerUpperLimits = new LowerUpperLimits();
 
@@ -100,23 +98,20 @@ public class Runner {
             }
             switch (choice) {
                 case 1:
-                    LeftRectangleMethod leftRectangleMethod = new LeftRectangleMethod();
-                    leftRectangleMethod.setExpression(expression);
+                    LeftRectangleMethod leftRectangleMethod = new LeftRectangleMethod(expression);
                     Double area = leftRectangleMethod.leftCornerRM(lowerUpperLimits.getLowerBorder(),
                             lowerUpperLimits.getUpperBorder(), lowerUpperLimits.getCountOfSteps());
                     System.out.printf("Area of integral is %5.5f" , area);
                     correctValue = true;
                     break;
                 case 2: //метод центральных прямоугольников
-                    CenterRectangleMethod centerCornerRectangleMethod = new CenterRectangleMethod();
-                    centerCornerRectangleMethod.setExpression(expression);
+                    CenterRectangleMethod centerCornerRectangleMethod = new CenterRectangleMethod(expression);
                     Double areaCC = centerCornerRectangleMethod.centerCornerRM(lowerUpperLimits.getLowerBorder(),
                             lowerUpperLimits.getUpperBorder(), lowerUpperLimits.getCountOfSteps());
                     System.out.printf("Area of integral is %5.5f" , areaCC);
                     correctValue = true;
                 case 3: //метод правых прямоугольников
-                    RightRectangleMethod rightRectangleMethod = new RightRectangleMethod();
-                    rightRectangleMethod.setExpression(expression);
+                    RightRectangleMethod rightRectangleMethod = new RightRectangleMethod(expression);
                     Double areaRC = rightRectangleMethod.rightCornerRM(lowerUpperLimits.getLowerBorder(),
                             lowerUpperLimits.getUpperBorder(), lowerUpperLimits.getCountOfSteps());
                     System.out.printf("Area of integral is %5.5f" , areaRC);

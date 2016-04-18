@@ -3,19 +3,13 @@ package com.goit.rectanglemethod;
 /**
  * Created by Сергей on 12.04.2016.
  */
-public class LeftRectangleMethod {
-    private static   String expression;
+public class LeftRectangleMethod extends AbstractRectangleMethod {
 
-    public String getExpression() {
-        return expression;
+    public LeftRectangleMethod(String expression) {
+        super(expression);
     }
 
-    public void setExpression(String expression) {
-        this.expression = expression;
-    }
-
-    public static double leftCornerRM (Double lowerBorder, Double upperBorder, Integer countOfSteps) {
-        ConvertFunctionToRPN convertFunctionToRPN = new ConvertFunctionToRPN();
+    public double leftCornerRM (Double lowerBorder, Double upperBorder, Integer countOfSteps) {
         Double result;
         Double deltaX = (upperBorder - lowerBorder) / countOfSteps;
         Double[] array = new Double[countOfSteps];

@@ -34,14 +34,14 @@ public class ConvertFunctionToRPN {
         OPERATORS.put(")", 4);
     }
 
-    private static String preChange (String newFunction){
+    private String preChange (String newFunction){
         newFunction = newFunction.replaceAll(" ", "");
         newFunction = newFunction.replaceAll(",", ".");
         return newFunction;
     }
 
 
-    public static String conversionToRPN(String newFunction, Map<String, Integer> operations) {
+    public String conversionToRPN(String newFunction, Map<String, Integer> operations) {
         String leftBracket = "(";
         String rightBracket = ")";
         int index = 0;
@@ -109,7 +109,7 @@ public class ConvertFunctionToRPN {
     }
 
 
-    public static Double calculateIntegral(String expression, Double x) {
+    public Double calculateIntegral(String expression, Double x) {
         boolean validValue = true;
         String rpn = conversionToRPN(expression, OPERATORS);
         String[] delims = rpn.split(" ");

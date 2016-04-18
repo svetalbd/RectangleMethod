@@ -3,19 +3,14 @@ package com.goit.rectanglemethod;
 /**
  * Created by Сергей on 12.04.2016.
  */
-public class CenterRectangleMethod {
-    private static   String expression;
+public class CenterRectangleMethod extends AbstractRectangleMethod {
 
-    public String getExpression() {
-        return expression;
+    public CenterRectangleMethod(String expression) {
+        super(expression);
     }
 
-    public void setExpression(String expression) {
-        this.expression = expression;
-    }
+    public double centerCornerRM (Double lowerBorder, Double upperBorder, Integer countOfSteps) {
 
-    public static double centerCornerRM (Double lowerBorder, Double upperBorder, Integer countOfSteps) {
-        ConvertFunctionToRPN convertFunctionToRPN = new ConvertFunctionToRPN();
         Double result;
         Double deltaX = (upperBorder - lowerBorder) / countOfSteps;
         Double[] array = new Double[countOfSteps];
